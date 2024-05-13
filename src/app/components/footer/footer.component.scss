@@ -1,0 +1,132 @@
+@use "../../style/presets/" as *;
+@use "../../style/mixins/" as *;
+@use "../../style/navbar.scss" as *;
+
+.nav-link {
+  font-size: 12px;
+  @include s3-s6-max {
+    &:hover {
+      color: $color-accent;
+      transition: 0.4s;
+      transform: scale(1.1);
+      filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+    }
+  }
+}
+
+.footer-box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  @include s1-s3 {
+    border-radius: 20px;
+  }
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+span {
+  margin: 0;
+  padding: 0;
+}
+
+.social-link-container {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 96%;
+  padding: 0 10px;
+  align-items: center;
+
+  .social-link-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    .social-link-icon {
+      @include flex-box-center;
+      // flex-direction: column;
+      margin: 0;
+      padding: 0 5px 0 5px;
+      background-color: transparent;
+      .fa-solid,
+      .fa-regular,
+      .fa-brands {
+        font-size: 16px;
+      }
+      .t-min {
+        text-transform: capitalize;
+        color: $color-gray;
+        padding-left: 5px;
+      }
+      &.active {
+        .fa-solid,
+        .fa-regular,
+        .fa-brands,
+        .t-min {
+          color: $color-accent;
+        }
+      }
+      &:disabled {
+        .fa-solid,
+        .fa-regular,
+        .fa-brands,
+        .t-min {
+          color: $color-gray;
+        }
+      }
+    }
+    &:hover {
+      color: $color-accent;
+      transition: 0.4s;
+      transform: scale(1.2);
+      filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+      .social-link-icon {
+        .fa-solid,
+        .fa-regular,
+        .fa-brands {
+          color: $color-accent;
+        }
+        .t-min {
+          color: $color-accent;
+        }
+        &:disabled {
+          .fa-solid,
+          .fa-regular,
+          .fa-brands,
+          .t-min {
+            color: $color-gray;
+          }
+        }
+      }
+    }
+    &:disabled {
+      color: $color-gray;
+    }
+  }
+}
+
+@media print {
+  .footer-box {
+    display: none;
+  }
+}

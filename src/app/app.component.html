@@ -1,0 +1,17 @@
+<div class="body-container">
+  <section class="left p-3 col-lg-2 col-md-2 col-sm-12 col-12 hide-mobile" *ngIf="shouldBeVisible">
+
+  </section>
+  <div class="container  col-lg-7 col-md-7 col-sm-12 col-12">
+    <router-outlet></router-outlet>
+  </div>
+  <section class="left p-2 col-lg-2 col-md-2 col-sm-12 col-12 hide-mobile" *ngIf="shouldBeVisible">
+    <!-- <iframe class="tiktok" src="https://www.tiktok.com/embed/v2/7364325880501374209" width="320" height="560"
+      frameborder="0"></iframe> -->
+  </section>
+  <div *ngIf="statusMessage" class="status-message">
+    <div class="status-message-text">{{ statusMessage }}</div>
+    <img class="status-message-logo" src="{{path_logo}}" alt="logo">
+    <div class="status-message-name">Discussio</div>
+  </div>
+</div>
