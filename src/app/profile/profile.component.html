@@ -1,0 +1,125 @@
+<div class="content-component">
+  <div [@top1] class="wrapper col-lg-6 col-md-6 col-2 col-12">
+
+    <div class="flex-box-center t-c p-2 mt-2 w-100">
+      <i class="fa-solid fa-gear"></i>
+      <p class="t-lar-xx bold mb-2 t-c">Редагування профілю.</p>
+      <p class="t-min">Вкажіть контактну інформацію.</p>
+
+      <p class="t-min bold mt-3">Натисніть для виходу з аккаунту.</p>
+      <div class="flex-group mt-2">
+        <button class="link-t" (click)="logout()">
+          <span class="m-2">ВИЙТИ З АККАУНТУ</span><i class="icon-up fa-solid fa-door-open p-2"></i>
+        </button>
+      </div>
+    </div>
+
+    <mat-label class="t-c t-lar bold accent mt-2">Персональні дані</mat-label>
+
+    <div class="img-wrapper">
+
+      <ng-container *ngIf="userImg !== 'user_default.svg' && isLoadingImg">
+        <img class="img-fluid" [src]="serverPathPhotoUser + userImg" alt="img">
+      </ng-container>
+
+      <ng-container *ngIf="userImg && userImg !== 'user_default.svg' && !isLoadingImg">
+        <div class="img-fluid">
+          <div class="container-loader-mini">
+            <mat-spinner color="warn"></mat-spinner>
+            <img [src]="serverPathPhotoUser + userImg" (load)="isLoadingImg = true" hidden>
+            <div class="t-min bold gray mt-2">Завантаження фото</div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!userImg || userImg === 'user_default.svg'">
+        <img class="img-fluid" src="../../../../assets/user_default.svg" alt="img">
+      </ng-container>
+
+      <div class="card-1">
+        <div class="input-div">
+          <i class="icon-up fa-solid fa-cloud-arrow-up" for="upload"></i>
+          <!-- <input #_fileInput type="file" (change)="openCropperDialog($event)" accept="image/*" hidden> -->
+          <!-- <button class="input-up" (click)="_fileInput.click()"> </button> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="w-100 flex-column">
+                <div class="t-min t-c">Дата народження</div>
+                <div class="t-lar-x bold t-c">{{userInfo.dob | date}}</div>
+              </div> -->
+
+    <mat-form-field class="item-select mt-3 w-100" appearance="outline">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="userInfo.dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint class="gray" align="start">Дата народження</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label>Прізвище</mat-label>
+      <input name="userInfo.lastName" matInput [(ngModel)]="userInfo.lastName">
+    </mat-form-field>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label>Ім'я</mat-label>
+      <input name="userInfo.firstName" matInput [(ngModel)]="userInfo.firstName">
+    </mat-form-field>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label>По батькові</mat-label>
+      <input name="userInfo.surName" matInput [(ngModel)]="userInfo.surName">
+    </mat-form-field>
+    <mat-label class="t-c t-lar bold accent mt-2">Контактні дані</mat-label>
+    <div class="w-100 flex-column">
+      <div class="t-min t-c">Пошта при реєстрації</div>
+      <div class="t-med bold t-c">{{userInfo.user_mail}}</div>
+    </div>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label class="flex-box"><i class="fa-solid fa-at"></i><span class="accent"> Контактна
+          пошта*</span></mat-label>
+      <input name="userCont.mail" matInput [(ngModel)]="userCont.mail">
+    </mat-form-field>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label class="flex-box"><i class="fa-solid fa-phone"></i><span class="accent">
+          Телефон*</span></mat-label>
+      <input type="tel" name="userCont.tell" matInput [(ngModel)]="userCont.tell" [maxlength]="10"
+        [pattern]="phonePattern">
+    </mat-form-field>
+    <mat-label class="label"></mat-label>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label><i class="fa-solid fa-plus"><i class="fa-solid fa-phone"></i></i>Додатковий
+        телефон</mat-label>
+      <input type="tel" name="userCont.phone_alt" matInput [(ngModel)]="userCont.phone_alt" [maxlength]="10"
+        [pattern]="phonePattern">
+    </mat-form-field>
+    <mat-label class="t-c t-lar bold accent mt-2">Посилання на мене</mat-label>
+    <div class="t-min accent t-c">Вводити потрібно тільки частку User</div>
+    <mat-form-field class="item-select mt-2" appearance="outline">
+      <mat-label class="flex-box"><i class="fa-brands fa-telegram"></i><span class="">
+          https://t.me/</span><span class="accent">user</span>
+      </mat-label>
+      <input name="userCont.telegram" matInput [(ngModel)]="userCont.telegram">
+    </mat-form-field>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label class="flex-box"><i class="fa-brands fa-facebook"></i><span class="">
+          https://www.facebook.com/</span><span class="accent">user</span></mat-label>
+      <input name="userCont.facebook" matInput [(ngModel)]="userCont.facebook">
+    </mat-form-field>
+    <mat-form-field class="item-select" appearance="outline">
+      <mat-label class="flex-box"><i class="fa-brands fa-instagram"></i><span class="">
+          https://www.instagram.com/</span><span class="accent">user</span></mat-label>
+      <input name="userCont.instagram" matInput [(ngModel)]="userCont.instagram">
+    </mat-form-field>
+    <mat-label class="label"></mat-label>
+    <mat-form-field class="item-select mb-2" appearance="outline">
+      <mat-label><i class="fa-brands fa-viber"></i>Viber номер телефону</mat-label>
+      <input type="tel" name="userCont.phone_alt" matInput [(ngModel)]="userCont.viber" [maxlength]="10"
+        [pattern]="phonePattern">
+    </mat-form-field>
+    <div class="btn-group">
+      <button class="btn" (click)="saveInfoCont()">
+        <div class="t-min">ЗБЕРЕГТИ</div>
+        <i class="fa-regular fa-circle-check ml-2"></i>
+      </button>
+    </div>
+  </div>
+</div>

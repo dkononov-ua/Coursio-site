@@ -1,0 +1,48 @@
+<div class="content-component">
+  <!-- <div class="switch-container">
+
+    <div class="switch-btn-group">
+      <button class="btn" [routerLink]="'/auth/login'">
+        <i class="fa-solid fa-arrow-left"></i>
+        <div class="t-min white">Назад</div>
+      </button>
+    </div>
+
+    <div class="switch-btn-group">
+      <button class="btn" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+        <div class="t-min white">Назад</div>
+      </button>
+    </div>
+
+    <div class="menu-box hide-mobile">
+      <div class="menu-lable">Меню</div>
+      <div class="menu-name">Предметів</div>
+    </div>
+
+    <div class="switch-btn-group">
+      <button class="btn" [routerLinkActive]="'active'" [routerLink]="'/сourses/name'">
+        <i class="fa-solid fa-shapes"></i>
+        <div class="t-min">Предмети</div>
+      </button>
+    </div>
+
+    <div class="switch-btn-group">
+      <button class="btn" [routerLinkActive]="'active'" [routerLink]="'/сourses/topic'">
+        <i class="fa-solid fa-layer-group"></i>
+        <div class="t-min">Теми</div>
+      </button>
+    </div>
+
+  </div> -->
+
+  <div class="main-container w-100">
+    <main class="main-content p-2">
+      <router-outlet></router-outlet>
+    </main>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+
+</div>

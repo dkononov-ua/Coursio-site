@@ -47,16 +47,11 @@
   }
 
   .main-container {
-    // height: auto !important;
-    // height: calc(100vh - 100px - 1rem);
-    // overflow: auto;
     position: relative;
     height: calc(100vh - 100px);
-
     @include s1-s3 {
       height: 100vh;
     }
-
     &::-webkit-scrollbar {
       display: none;
     }
@@ -68,12 +63,8 @@
         display: none;
       }
     }
-
     .footer {
       @include flex-box-center;
-      // position: sticky;
-      // z-index: 100;
-      // bottom: 0;
       width: 100%;
       flex-direction: column;
       align-items: stretch;

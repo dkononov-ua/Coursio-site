@@ -29,11 +29,18 @@ import { SharedModule } from './shared/shared.module';
 
 import { AuthModule } from './auth/auth.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { CoursesModule } from './сourses/сourses.module';
+import { CoursesRoutingModule } from './сourses/сourses-routing.module';
+import { TemplateComponent } from './template/template.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TemplateComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +77,9 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     AuthRoutingModule,
     SharedModule,
 
+    CoursesModule,
+    CoursesRoutingModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

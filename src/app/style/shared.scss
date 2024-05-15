@@ -297,6 +297,7 @@
   height: calc(100vh - 1rem);
   width: 100%;
   position: relative;
+  display: flex;
   &::-webkit-scrollbar {
     display: none;
   }
